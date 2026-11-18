@@ -1,0 +1,22 @@
+# sample requests (REST Client extension)
+# copy a profile id from /feed for the swipe request
+
+@base = http://localhost:4000/api/v1
+
+### health
+GET {{base}}/health/ready
+
+### feed
+GET {{base}}/feed?limit=5
+
+### swipe (direction: like or pass)
+POST {{base}}/swipe
+Content-Type: application/json
+
+{ "targetId": "paste-an-id-from-feed", "direction": "like" }
+
+### matches
+GET {{base}}/matches
+
+### reset demo (needs DEMO_RESET_ENABLED=true)
+POST {{base}}/demo/reset

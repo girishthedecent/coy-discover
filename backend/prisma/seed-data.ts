@@ -1,0 +1,292 @@
+// likesYou / passedYou are swipes these people already made on the demo user
+export type SeedProfile = {
+  name: string;
+  birthDate: string;
+  bio: string;
+  city: string;
+  college?: string;
+  interests: string[];
+  likesYou?: boolean;
+  passedYou?: boolean;
+};
+
+const AVATAR_BACKGROUNDS = ['ffd5dc', 'ffdfbf', 'c0aede', 'd1d4f9', 'b6e3f4', 'fde68a', 'bbf7d0'];
+
+export function avatarUrl(name: string, index: number): string {
+  const background = AVATAR_BACKGROUNDS[index % AVATAR_BACKGROUNDS.length]!;
+  const seed = encodeURIComponent(`${name}-${index}`);
+  return `https://api.dicebear.com/9.x/notionists-neutral/svg?seed=${seed}&backgroundColor=${background}`;
+}
+
+export const DEMO_USER = {
+  name: 'You',
+  birthDate: '2003-04-12',
+  bio: 'Trying out Discover.',
+  city: 'Hyderabad',
+  college: 'IIIT Hyderabad',
+  interests: ['coding', 'music', 'chai'],
+};
+
+export const SEED_PROFILES: SeedProfile[] = [
+  {
+    name: 'Ananya',
+    birthDate: '2003-08-21',
+    bio: 'Will judge you by your playlist. Lo-fi on weekdays, Arijit on weekends.',
+    city: 'Bengaluru',
+    college: 'Christ University',
+    interests: ['music', 'thrifting', 'filter coffee'],
+    likesYou: true,
+  },
+  {
+    name: 'Rohan',
+    birthDate: '2002-01-14',
+    bio: 'Final-year CSE. I debug for a living and bake banana bread to cope.',
+    city: 'Pune',
+    college: 'COEP',
+    interests: ['baking', 'chess', 'open source'],
+  },
+  {
+    name: 'Meera',
+    birthDate: '2004-05-02',
+    bio: 'Bharatanatyam since I was six. Ask me about the worst stage fall I have survived.',
+    city: 'Chennai',
+    college: 'Stella Maris College',
+    interests: ['dance', 'temples', 'poetry'],
+  },
+  {
+    name: 'Kabir',
+    birthDate: '2001-11-30',
+    bio: 'Weekend trekker, weekday spreadsheet enjoyer. Sahyadris are my therapy.',
+    city: 'Mumbai',
+    college: 'NMIMS',
+    interests: ['trekking', 'photography', 'finance'],
+    likesYou: true,
+  },
+  {
+    name: 'Ishita',
+    birthDate: '2003-02-18',
+    bio: 'Design student who redesigns every menu card she sees. Sorry in advance.',
+    city: 'Ahmedabad',
+    college: 'NID Ahmedabad',
+    interests: ['design', 'street food', 'sketching'],
+  },
+  {
+    name: 'Arjun',
+    birthDate: '2002-07-09',
+    bio: 'Gully cricket captain, retired. Now I just argue about IPL auctions.',
+    city: 'Hyderabad',
+    college: 'Osmania University',
+    interests: ['cricket', 'biryani', 'podcasts'],
+    passedYou: true,
+  },
+  {
+    name: 'Sana',
+    birthDate: '2004-09-25',
+    bio: 'Bookstagram account with 400 followers and very strong opinions.',
+    city: 'Lucknow',
+    college: 'Lucknow University',
+    interests: ['books', 'calligraphy', 'kebabs'],
+    likesYou: true,
+  },
+  {
+    name: 'Vikram',
+    birthDate: '2000-03-03',
+    bio: 'Product intern by day, stand-up open mics by night. Mostly bombing, still trying.',
+    city: 'Gurugram',
+    interests: ['comedy', 'startups', 'running'],
+  },
+  {
+    name: 'Diya',
+    birthDate: '2003-12-11',
+    bio: 'Marine biology nerd stuck in a landlocked city. Show me your aquarium pics.',
+    city: 'Delhi',
+    college: 'Miranda House',
+    interests: ['oceans', 'scuba', 'documentaries'],
+  },
+  {
+    name: 'Aditya',
+    birthDate: '2001-06-27',
+    bio: 'Guitar, mountains, and a slightly concerning number of houseplants.',
+    city: 'Dehradun',
+    interests: ['guitar', 'plants', 'hiking'],
+    likesYou: true,
+  },
+  {
+    name: 'Nisha',
+    birthDate: '2002-10-05',
+    bio: 'Med student. If you text me after 2 a.m. I am either on call or asleep standing up.',
+    city: 'Manipal',
+    college: 'Kasturba Medical College',
+    interests: ['medicine', 'k-dramas', 'swimming'],
+  },
+  {
+    name: 'Rahul',
+    birthDate: '2003-04-19',
+    bio: 'I will plan the entire trip itinerary. You just have to show up.',
+    city: 'Jaipur',
+    college: 'MNIT Jaipur',
+    interests: ['travel', 'history', 'spreadsheets'],
+    passedYou: true,
+  },
+  {
+    name: 'Tara',
+    birthDate: '2004-01-23',
+    bio: 'Climate activist and part-time plant mom. Ask me about my compost bin.',
+    city: 'Bengaluru',
+    college: 'Azim Premji University',
+    interests: ['sustainability', 'gardening', 'cycling'],
+  },
+  {
+    name: 'Neel',
+    birthDate: '2002-08-14',
+    bio: 'Competitive programmer who still gets lost in his own city. Navigation is hard.',
+    city: 'Kolkata',
+    college: 'Jadavpur University',
+    interests: ['algorithms', 'football', 'phuchka'],
+    likesYou: true,
+  },
+  {
+    name: 'Riya',
+    birthDate: '2003-03-29',
+    bio: 'Theatre kid who never grew out of it. I do accents. Badly.',
+    city: 'Mumbai',
+    college: "St. Xavier's College",
+    interests: ['theatre', 'improv', 'vada pav'],
+  },
+  {
+    name: 'Karan',
+    birthDate: '2001-12-07',
+    bio: 'Gym at 6 a.m., biryani at 6 p.m. Balance.',
+    city: 'Hyderabad',
+    college: 'BITS Hyderabad',
+    interests: ['fitness', 'biryani', 'anime'],
+  },
+  {
+    name: 'Pooja',
+    birthDate: '2002-05-16',
+    bio: 'Data science major who uses pivot tables to plan birthday parties.',
+    city: 'Chennai',
+    college: 'IIT Madras',
+    interests: ['data', 'carnatic music', 'board games'],
+    likesYou: true,
+  },
+  {
+    name: 'Siddharth',
+    birthDate: '2000-09-01',
+    bio: 'Film photographer. Yes, it is expensive. No, I will not stop.',
+    city: 'Kochi',
+    interests: ['film photography', 'backwaters', 'jazz'],
+  },
+  {
+    name: 'Aisha',
+    birthDate: '2004-07-08',
+    bio: 'Law student. I will win the argument and then buy you ice cream.',
+    city: 'Bengaluru',
+    college: 'NLSIU',
+    interests: ['debating', 'ice cream', 'true crime'],
+  },
+  {
+    name: 'Varun',
+    birthDate: '2002-02-26',
+    bio: 'Building a startup in my hostel room. Investors, my DMs are open.',
+    city: 'Kharagpur',
+    college: 'IIT Kharagpur',
+    interests: ['startups', 'basketball', 'maggi'],
+    passedYou: true,
+  },
+  {
+    name: 'Kavya',
+    birthDate: '2003-10-17',
+    bio: 'Painter, mostly of my cat. She is a demanding muse.',
+    city: 'Mysuru',
+    interests: ['painting', 'cats', 'yoga'],
+  },
+  {
+    name: 'Yash',
+    birthDate: '2001-04-04',
+    bio: 'Formula 1 fan who drives exactly at the speed limit.',
+    city: 'Indore',
+    college: 'IIM Indore',
+    interests: ['f1', 'poha', 'strategy games'],
+  },
+  {
+    name: 'Zoya',
+    birthDate: '2002-12-20',
+    bio: 'Journalism student. I will ask too many questions on the first date.',
+    city: 'Delhi',
+    college: 'Jamia Millia Islamia',
+    interests: ['journalism', 'old delhi food', 'vinyl'],
+    likesYou: true,
+  },
+  {
+    name: 'Manav',
+    birthDate: '2003-06-12',
+    bio: 'Architecture student. I notice ceilings. Every single ceiling.',
+    city: 'Chandigarh',
+    college: 'Chandigarh College of Architecture',
+    interests: ['architecture', 'cycling', 'sketching'],
+  },
+  {
+    name: 'Shreya',
+    birthDate: '2004-03-09',
+    bio: 'Classical singer, secret metalhead. Contradictions keep life interesting.',
+    city: 'Pune',
+    college: 'Fergusson College',
+    interests: ['singing', 'metal', 'misal pav'],
+  },
+  {
+    name: 'Dev',
+    birthDate: '2000-11-15',
+    bio: 'Marathon runner. I will convince you that 5 a.m. runs are fun. They are not.',
+    city: 'Bengaluru',
+    interests: ['running', 'coffee', 'sci-fi'],
+  },
+  {
+    name: 'Fatima',
+    birthDate: '2003-01-28',
+    bio: 'Pharmacy student and amateur baker. My brownies have a fan club.',
+    city: 'Hyderabad',
+    college: 'Osmania University',
+    interests: ['baking', 'pharmacology', 'mehendi'],
+  },
+  {
+    name: 'Aarav',
+    birthDate: '2002-09-19',
+    bio: 'Game dev hobbyist. I have finished zero games and started forty.',
+    city: 'Noida',
+    college: 'Amity University',
+    interests: ['game dev', 'pixel art', 'momos'],
+  },
+  {
+    name: 'Lakshmi',
+    birthDate: '2001-08-03',
+    bio: 'Veena player and robotics club lead. Yes, both.',
+    city: 'Thiruvananthapuram',
+    college: 'College of Engineering Trivandrum',
+    interests: ['robotics', 'veena', 'appam'],
+  },
+  {
+    name: 'Nikhil',
+    birthDate: '2003-05-24',
+    bio: 'Quizzing team captain. I know a useless fact about everything.',
+    city: 'Bhubaneswar',
+    college: 'KIIT',
+    interests: ['quizzing', 'history', 'football'],
+  },
+  {
+    name: 'Prisha',
+    birthDate: '2004-11-01',
+    bio: 'Fashion student who still wears the same hoodie three days a week.',
+    city: 'Mumbai',
+    college: 'NIFT Mumbai',
+    interests: ['fashion', 'thrifting', 'bollywood'],
+  },
+  {
+    name: 'Ritvik',
+    birthDate: '2002-04-22',
+    bio: 'Astronomy club. Come stargazing, I will bring the telescope and the chai.',
+    city: 'Bengaluru',
+    college: 'RV College of Engineering',
+    interests: ['astronomy', 'chai', 'camping'],
+  },
+];

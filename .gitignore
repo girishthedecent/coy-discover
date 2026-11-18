@@ -1,0 +1,12 @@
+node_modules/
+dist/
+coverage/
+.next/
+*.log
+*.tsbuildinfo
+.DS_Store
+
+# env files (keep the examples)
+.env
+.env.*
+!.env.example

@@ -1,0 +1,66 @@
+generator client {
+  provider            = "prisma-client"
+  output              = "../src/generated/prisma"
+  moduleFormat        = "esm"
+  importFileExtension = "js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum SwipeDirection {
+  LIKE
+  PASS
+}
+
+model User {
+  // v4 on purpose, v7 ids leak signup time
+  id        String   @id @default(uuid(4)) @db.Uuid
+  name      String
+  birthDate DateTime @db.Date
+  bio       String
+  city      String
+  college   String?
+  photoUrl  String
+  interests String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  swipesMade     Swipe[] @relation("SwipesMade")
+  swipesReceived Swipe[] @relation("SwipesReceived")
+  matchesAsA     Match[] @relation("MatchUserA")
+  matchesAsB     Match[] @relation("MatchUserB")
+
+  @@map("users")
+}
+
+model Swipe {
+  id        String         @id @default(uuid(7)) @db.Uuid
+  swiperId  String         @db.Uuid
+  targetId  String         @db.Uuid
+  direction SwipeDirection
+  createdAt DateTime       @default(now())
+
+  swiper User @relation("SwipesMade", fields: [swiperId], references: [id], onDelete: Cascade)
+  target User @relation("SwipesReceived", fields: [targetId], references: [id], onDelete: Cascade)
+
+  @@unique([swiperId, targetId])
+  @@index([targetId])
+  @@map("swipes")
+}
+
+// userAId < userBId (check constraint) so a pair only has one row
+model Match {
+  id        String   @id @default(uuid(7)) @db.Uuid
+  userAId   String   @db.Uuid
+  userBId   String   @db.Uuid
+  createdAt DateTime @default(now())
+
+  userA User @relation("MatchUserA", fields: [userAId], references: [id], onDelete: Cascade)
+  userB User @relation("MatchUserB", fields: [userBId], references: [id], onDelete: Cascade)
+
+  @@unique([userAId, userBId])
+  @@index([userBId])
+  @@map("matches")
+}
